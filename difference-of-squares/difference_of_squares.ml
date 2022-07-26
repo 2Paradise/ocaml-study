@@ -11,3 +11,4 @@ let sum_of_squares n =
 
 let difference_of_squares n =
     (square_of_sum n) - (sum_of_squares n)
+

@@ -13,3 +13,20 @@ let count_nucleotide s c =
     | None -> Error c
   else
     Error c
+
+let count_nucleotides s = String.fold_result s ~init:empty ~f:(
+  fun acc_map ch -> 
+    if valid_dna_char ch
+    then
+      (
+        let prev_cnt = 
+          match Map.find acc_map ch with
+          | Some cnt -> cnt
+          | None -> 0 
+        in
+        
+        Ok (Map.set acc_map ~key:ch ~data:(prev_cnt + 1))
+      )
+    else 
+      Error ch
+)
